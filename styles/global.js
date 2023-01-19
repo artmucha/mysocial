@@ -46,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
     body {
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.small};
-      background-color: ${theme.colors.mainBg};
+      background-color: ${theme.colors.light};
     }
     a {
       text-decoration: none;
