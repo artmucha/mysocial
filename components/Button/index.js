@@ -8,7 +8,8 @@ const Button = (
     fullWidth = false,
     outline = false,
     minimal = false,
-    secondary = false,
+    background = 'primary',
+    color = 'white',
     ...props
   },
   ref
@@ -18,7 +19,8 @@ const Button = (
     hasIcon={!!icon}
     outline={outline}
     minimal={minimal}
-    secondary={secondary}
+    background={background}
+    color={color}
     ref={ref}
     {...props}
   >

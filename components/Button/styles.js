@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { darken } from 'polished'
+import { darken, lighten } from 'polished'
 
 const wrapperModifiers = {
   fullWidth: () => css`
@@ -14,18 +14,9 @@ const wrapperModifiers = {
     }
   `,
   outline: (theme) => css`
-    background: none;
-    color: ${theme.colors.primary};
-    border: 0.2rem solid ${theme.colors.primary};
-    &:hover {
-      color: ${theme.colors.white};
-      background: ${theme.colors.primary};
-    }
-  `,
-  secondary: (theme) => css`
     background: ${theme.colors.white};
     color: ${theme.colors.primary};
-    border: 0.2rem solid ${theme.colors.white};
+    border: 0.2rem solid ${theme.colors.primary};
     &:hover {
       color: ${theme.colors.white};
       background: ${theme.colors.primary};
@@ -47,31 +38,30 @@ const wrapperModifiers = {
 }
 
 export const Wrapper = styled.button`
-  ${({ theme, fullWidth, hasIcon, outline, minimal, disabled, secondary }) => css`
+  ${({ theme, fullWidth, hasIcon, outline, minimal, disabled, background, color }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 4.8rem;
     border: 0;
-    background: ${theme.colors.primary};
-    color: ${theme.colors.white};
+    background: ${theme.colors[background]};
+    color: ${theme.colors[color]};
     font-size: ${theme.font.sizes.small};
     font-family: ${theme.font.family};
     border-radius: ${theme.border.radius};
-    padding: ${theme.spacings.xxsmall} ${theme.spacings.medium};
+    padding: ${theme.spacings.xxsmall} ${theme.spacings.small};
     text-decoration: none;
     cursor: pointer;
     
     &:hover {
       background: ${minimal
       ? 'none'
-      : `${darken(0.1, theme.colors.primary)}`};
+      : `${darken(0.05, theme.colors[background])}`};
     }
     ${!!fullWidth && wrapperModifiers.fullWidth()};
     ${!!hasIcon && wrapperModifiers.withIcon(theme)};
     ${!!outline && wrapperModifiers.outline(theme)};
     ${!!minimal && wrapperModifiers.minimal(theme)};
-    ${!!secondary && wrapperModifiers.secondary(theme)};
     ${disabled && wrapperModifiers.disabled()};
   `}
 `
